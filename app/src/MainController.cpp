@@ -157,6 +157,32 @@ void MainController::draw_neptune() {
     neptune->draw(shader);
 }
 
+void MainController::update_camera() {
+    auto platform = engine::core::Controller::get<engine::platform::PlatformController>();
+    auto camera = engine::core::Controller::get<engine::graphics::GraphicsController>()->camera();
+    float dt = platform->dt();
+    if (platform->key(engine::platform::KEY_W)
+                .state() == engine::platform::Key::State::Pressed) {
+        camera->move_camera(engine::graphics::Camera::Movement::FORWARD, dt);
+    }
+    if (platform->key(engine::platform::KEY_S)
+                .state() == engine::platform::Key::State::Pressed) {
+        camera->move_camera(engine::graphics::Camera::Movement::BACKWARD, dt);
+    }
+    if (platform->key(engine::platform::KEY_A)
+                .state() == engine::platform::Key::State::Pressed) {
+        camera->move_camera(engine::graphics::Camera::Movement::LEFT, dt);
+    }
+    if (platform->key(engine::platform::KEY_D)
+                .state() == engine::platform::Key::State::Pressed) {
+        camera->move_camera(engine::graphics::Camera::Movement::RIGHT, dt);
+    }
+
+}
+void MainController::update() {
+    update_camera();
+}
+
 void MainController::begin_draw() {
     engine::graphics::OpenGL::clear_buffers();
 }
