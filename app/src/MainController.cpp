@@ -50,6 +50,7 @@ void MainController::draw_mercury() {
     shader->set_mat4("view", graphics->camera()->view_matrix());
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(-5.50f, 0.0f, -20.0f));
+    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
     model = glm::scale(model, glm::vec3(0.5f));
     shader->set_mat4("model", model);
     mercury->draw(shader);
@@ -64,6 +65,7 @@ void MainController::draw_venus() {
     shader->set_mat4("view", graphics->camera()->view_matrix());
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(-3.70f, 0.0f, -20.0f));
+    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
     model = glm::scale(model, glm::vec3(0.8f));
     shader->set_mat4("model", model);
     venus->draw(shader);
@@ -78,6 +80,7 @@ void MainController::draw_earth() {
     shader->set_mat4("view", graphics->camera()->view_matrix());
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(-1.55f, 0.0f, -20.0f));
+    model = glm::rotate(model, glm::radians(270.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
     model = glm::scale(model, glm::vec3(0.95f));
     shader->set_mat4("model", model);
     earth->draw(shader);
@@ -94,6 +97,7 @@ void MainController::draw_mars() {
     shader->set_mat4("view", graphics->camera()->view_matrix());
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(0.5f, 0.0f, -20.0f));
+    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
     model = glm::scale(model, glm::vec3(0.7f));
     shader->set_mat4("model", model);
     mars->draw(shader);
@@ -108,6 +112,7 @@ void MainController::draw_jupiter() {
     shader->set_mat4("view", graphics->camera()->view_matrix());
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(3.5f, 0.0f, -20.0f));
+    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
     model = glm::scale(model, glm::vec3(1.8f));
     shader->set_mat4("model", model);
     jupiter->draw(shader);
@@ -122,6 +127,7 @@ void MainController::draw_saturn() {
     shader->set_mat4("view", graphics->camera()->view_matrix());
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(7.3f, 0.0f, -20.0f));
+    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
     model = glm::scale(model, glm::vec3(1.2f));
     shader->set_mat4("model", model);
     saturn->draw(shader);
@@ -152,10 +158,26 @@ void MainController::draw_neptune() {
     shader->set_mat4("view", graphics->camera()->view_matrix());
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(13.0f, 0.0f, -20.0f));
+    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
     model = glm::scale(model, glm::vec3(0.7f));
     shader->set_mat4("model", model);
     neptune->draw(shader);
 }
+void MainController::draw_meteorite() {
+    auto resources = get<engine::resources::ResourcesController>();
+    auto graphics = get<engine::graphics::GraphicsController>();
+    engine::resources::Model *meteorite = resources->model("meteorite");
+    engine::resources::Shader *shader = resources->shader("basic");
+    shader->use();
+    shader->set_mat4("projection", graphics->projection_matrix());
+    shader->set_mat4("view", graphics->camera()->view_matrix());
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(12.0f, 6.0f, -20.0f));
+    model = glm::scale(model, glm::vec3(0.25f));
+    shader->set_mat4("model", model);
+    meteorite->draw(shader);
+}
+
 void MainController::draw_skybox() {
     auto resources= engine::core::Controller::get<engine::resources::ResourcesController>();
     auto skybox = resources->skybox("blue");
@@ -203,6 +225,7 @@ void MainController::draw() {
     draw_saturn();
     draw_uranus();
     draw_neptune();
+    draw_meteorite();
     draw_skybox();
 
 }

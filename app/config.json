@@ -1,40 +1,44 @@
 {
   "resources": {
     "models": {
-      "sun" : {
+      "sun": {
         "path": "sun/scene.gltf",
         "flip_uvs": true
       },
-      "mercury" : {
+      "mercury": {
         "path": "mercury/scene.gltf",
         "flip_uvs": true
       },
-      "venus" : {
+      "venus": {
         "path": "venus/scene.gltf",
         "flip_uvs": true
       },
-      "earth" : {
+      "earth": {
         "path": "earth/scene.gltf",
         "flip_uvs": true
       },
-      "mars" : {
+      "mars": {
         "path": "mars/scene.gltf",
         "flip_uvs": true
       },
-      "jupiter" : {
+      "jupiter": {
         "path": "jupiter/scene.gltf",
         "flip_uvs": true
       },
-      "saturn" : {
+      "saturn": {
         "path": "saturn/scene.gltf",
         "flip_uvs": true
       },
-      "neptune" : {
+      "neptune": {
         "path": "neptune/scene.gltf",
         "flip_uvs": true
       },
-      "uranus" : {
+      "uranus": {
         "path": "uranus(1)/scene.gltf",
+        "flip_uvs": true
+      },
+      "meteorite": {
+        "path": "meteorite/scene.gltf",
         "flip_uvs": true
       }
     }

@@ -20,12 +20,16 @@ class MainController : public engine::core::Controller {
     void draw_saturn();
     void draw_uranus();
     void draw_neptune();
+    void draw_meteorite();
     void draw_skybox();
     void update_camera();
     void update() override;
     void begin_draw() override;
     void draw() override;
     void end_draw() override;
+
+    bool visible_meteorite = false;
+    bool visible_jupiter = true;
 
 public:
     std::string_view name() const override {
