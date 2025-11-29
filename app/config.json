@@ -4,12 +4,44 @@
       "sun" : {
         "path": "sun/scene.gltf",
         "flip_uvs": true
+      },
+      "mercury" : {
+        "path": "mercury/scene.gltf",
+        "flip_uvs": true
+      },
+      "venus" : {
+        "path": "venus/scene.gltf",
+        "flip_uvs": true
+      },
+      "earth" : {
+        "path": "earth/scene.gltf",
+        "flip_uvs": true
+      },
+      "mars" : {
+        "path": "mars/scene.gltf",
+        "flip_uvs": true
+      },
+      "jupiter" : {
+        "path": "jupiter/scene.gltf",
+        "flip_uvs": true
+      },
+      "saturn" : {
+        "path": "saturn/scene.gltf",
+        "flip_uvs": true
+      },
+      "neptune" : {
+        "path": "neptune/scene.gltf",
+        "flip_uvs": true
+      },
+      "uranus" : {
+        "path": "uranus(1)/scene.gltf",
+        "flip_uvs": true
       }
     }
   },
   "window": {
     "height": 1200,
     "title": "Hello, window!",
-    "width": 1200
+    "width": 1900
   }
 }

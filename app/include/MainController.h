@@ -12,6 +12,14 @@ class MainController : public engine::core::Controller {
     void initialize() override;
     bool loop() override;
     void draw_sun();
+    void draw_mercury();
+    void draw_venus();
+    void draw_earth();
+    void draw_mars();
+    void draw_jupiter();
+    void draw_saturn();
+    void draw_uranus();
+    void draw_neptune();
     void begin_draw() override;
     void draw() override;
     void end_draw() override;
