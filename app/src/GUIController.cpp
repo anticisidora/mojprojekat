@@ -36,4 +36,4 @@ void GUIController::draw() {
     graphics->end_gui();
 }
 
-} // app
+}// namespace app

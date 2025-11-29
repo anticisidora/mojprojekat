@@ -20,6 +20,6 @@ private:
     void draw() override;
 };
 
-} // app
+}// namespace app
 
-#endif //GUICONTROLLER_H
+#endif//GUICONTROLLER_H
