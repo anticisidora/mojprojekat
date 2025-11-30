@@ -31,6 +31,8 @@ void MainController::set_lighting(engine::resources::Shader *shader) {
 
 
     shader->set_vec3("viewPos", graphics->camera()->Position);
+    shader->set_float("lightIntensity", lightIntensity);
+
 
 
     shader->set_vec3("dirLight.direction", glm::vec3(-0.3f, -1.0f, -0.2f));
@@ -274,6 +276,17 @@ void MainController::update_camera() {
 
         meteorite_pos = glm::vec3(12.0f, 6.0f, -20.0f);
     }
+
+    if (platform->key(engine::platform::KEY_UP).state() == engine::platform::Key::State::JustPressed) {
+        lightIntensity += 0.1f;
+        if (lightIntensity > 3.0f) lightIntensity = 3.0f;
+    }
+
+    if (platform->key(engine::platform::KEY_DOWN).state() == engine::platform::Key::State::JustPressed) {
+        lightIntensity -= 0.1f;
+        if (lightIntensity < 0.1f) lightIntensity = 0.1f;
+    }
+
 }
 void MainController::update() {
     auto platform = engine::core::Controller::get<engine::platform::PlatformController>();

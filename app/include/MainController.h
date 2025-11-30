@@ -44,6 +44,9 @@ class MainController : public engine::core::Controller {
     float meteor_radius = 0.25f;
     float jupiter_radius = 1.8f;
 
+    float lightIntensity = 1.0f;
+
+
 
 public:
     std::string_view name() const override {

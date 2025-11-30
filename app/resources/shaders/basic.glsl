@@ -30,6 +30,8 @@ in vec2 TexCoords;
 in vec3 Normal;
 in vec3 FragPos;
 
+uniform float lightIntensity;
+
 uniform sampler2D texture_diffuse1;
 uniform vec3 viewPos;
 
@@ -76,7 +78,7 @@ void main()
     vec3 diffD = dirLight.diffuse  * diff * texColor;
     vec3 specD = dirLight.specular * spec;
 
-    vec3 dirResult = ambD + diffD + specD;
+    vec3 dirResult = (ambD + diffD + specD) * lightIntensity;
 
 
     vec3 lightDirP = normalize(pointLight.position - FragPos);
@@ -95,7 +97,7 @@ void main()
     vec3 diffP2 = pointLight.diffuse  * diffP * texColor;
     vec3 specP2 = pointLight.specular * specP;
 
-    vec3 pointResult = (ambP + diffP2 + specP2) * attenuation;
+    vec3 pointResult = ((ambP + diffP2 + specP2) * attenuation) * lightIntensity;
 
 
     vec3 finalColor = dirResult + pointResult;
