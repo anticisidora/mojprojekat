@@ -25,6 +25,32 @@ bool MainController::loop() {
     }
     return true;
 }
+
+void MainController::set_lighting(engine::resources::Shader *shader) {
+    auto graphics = get<engine::graphics::GraphicsController>();
+
+
+    shader->set_vec3("viewPos", graphics->camera()->Position);
+
+
+    shader->set_vec3("dirLight.direction", glm::vec3(-0.3f, -1.0f, -0.2f));
+    shader->set_vec3("dirLight.ambient", glm::vec3(0.25f, 0.25f, 0.25f));
+    shader->set_vec3("dirLight.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
+    shader->set_vec3("dirLight.specular", glm::vec3(0.05f, 0.05f, 0.05f));
+
+
+    shader->set_vec3("pointLight.position", glm::vec3(-10.0f, 0.0f, -20.0f));
+
+    shader->set_vec3("pointLight.ambient", glm::vec3(0.15f, 0.15f, 0.15f));
+    shader->set_vec3("pointLight.diffuse", glm::vec3(0.35f, 0.35f, 0.35f));
+    shader->set_vec3("pointLight.specular", glm::vec3(0.1f, 0.1f, 0.1f));
+
+
+    shader->set_float("pointLight.constant", 1.0f);
+    shader->set_float("pointLight.linear", 0.01f);
+    shader->set_float("pointLight.quadratic", 0.001f);
+}
+
 void MainController::draw_sun() {
     auto resources = get<engine::resources::ResourcesController>();
     auto graphics = get<engine::graphics::GraphicsController>();
@@ -33,6 +59,8 @@ void MainController::draw_sun() {
     shader->use();
     shader->set_mat4("projection", graphics->projection_matrix());
     shader->set_mat4("view", graphics->camera()->view_matrix());
+    set_lighting(shader);
+
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(-10.0f, 0.0f, -20.0f));
     model = glm::scale(model, glm::vec3(0.3f));
@@ -48,6 +76,9 @@ void MainController::draw_mercury() {
     shader->use();
     shader->set_mat4("projection", graphics->projection_matrix());
     shader->set_mat4("view", graphics->camera()->view_matrix());
+    set_lighting(shader);
+
+
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(-5.50f, 0.0f, -20.0f));
     model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
@@ -63,6 +94,9 @@ void MainController::draw_venus() {
     shader->use();
     shader->set_mat4("projection", graphics->projection_matrix());
     shader->set_mat4("view", graphics->camera()->view_matrix());
+    set_lighting(shader);
+
+
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(-3.70f, 0.0f, -20.0f));
     model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
@@ -78,6 +112,9 @@ void MainController::draw_earth() {
     shader->use();
     shader->set_mat4("projection", graphics->projection_matrix());
     shader->set_mat4("view", graphics->camera()->view_matrix());
+    set_lighting(shader);
+
+
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(-1.55f, 0.0f, -20.0f));
     model = glm::rotate(model, glm::radians(270.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
@@ -94,6 +131,9 @@ void MainController::draw_mars() {
     shader->use();
     shader->set_mat4("projection", graphics->projection_matrix());
     shader->set_mat4("view", graphics->camera()->view_matrix());
+    set_lighting(shader);
+
+
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(0.5f, 0.0f, -20.0f));
     model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
@@ -109,6 +149,9 @@ void MainController::draw_jupiter() {
     shader->use();
     shader->set_mat4("projection", graphics->projection_matrix());
     shader->set_mat4("view", graphics->camera()->view_matrix());
+    set_lighting(shader);
+
+
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(3.5f, 0.0f, -20.0f));
     model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
@@ -124,6 +167,9 @@ void MainController::draw_saturn() {
     shader->use();
     shader->set_mat4("projection", graphics->projection_matrix());
     shader->set_mat4("view", graphics->camera()->view_matrix());
+    set_lighting(shader);
+
+
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(7.3f, 0.0f, -20.0f));
     model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
@@ -139,6 +185,9 @@ void MainController::draw_uranus() {
     shader->use();
     shader->set_mat4("projection", graphics->projection_matrix());
     shader->set_mat4("view", graphics->camera()->view_matrix());
+    set_lighting(shader);
+
+
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(10.50f, 0.0f, -20.0f));
     model = glm::scale(model, glm::vec3(2.0f));
@@ -154,6 +203,9 @@ void MainController::draw_neptune() {
     shader->use();
     shader->set_mat4("projection", graphics->projection_matrix());
     shader->set_mat4("view", graphics->camera()->view_matrix());
+    set_lighting(shader);
+
+
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(13.0f, 0.0f, -20.0f));
     model = glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 1.0f, 0.0f));
@@ -169,6 +221,9 @@ void MainController::draw_meteorite() {
     shader->use();
     shader->set_mat4("projection", graphics->projection_matrix());
     shader->set_mat4("view", graphics->camera()->view_matrix());
+    set_lighting(shader);
+
+
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, meteorite_pos);
     model = glm::scale(model, glm::vec3(0.25f));

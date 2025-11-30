@@ -8,12 +8,14 @@
 
 
 #include <engine/core/Controller.hpp>
+#include <engine/resources/Shader.hpp>
 
 namespace app {
 
 class MainController : public engine::core::Controller {
     void initialize() override;
     bool loop() override;
+    void set_lighting(engine::resources::Shader *shader);
     void draw_sun();
     void draw_mercury();
     void draw_venus();
